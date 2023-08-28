@@ -1,0 +1,1 @@
+export let Base_url="https://api.giphy.com/v1/"

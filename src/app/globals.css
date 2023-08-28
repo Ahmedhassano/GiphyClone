@@ -2,26 +2,83 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+@layer components{
+  .icon{
+    @apply text-lg text-white cursor-pointer 
+  } 
+  .title1{
+    @apply text-xl font-bold uppercase  text-white
+  }
+  .title2{
+    @apply text-lg font-bold uppercase  text-white
+  }
+  .DropDown{
+    @apply  bg-zinc-700 p-3
+     opacity-0 pointer-events-none space-y-2
+     group-hover/user:opacity-100 group-hover/user:pointer-events-auto  
+     }
+    .tab{
+      @apply grid place-items-center  text-lg font-bold  text-gray-300 cursor-pointer
+    }
+  .overly{
+    @apply w-screen h-screen fixed inset-0 bg-[#0000005b]
   }
 }
+:root{
+  --bg-body:#1c1b1b;
+}
+@layer base{
+ *{
+  scroll-behavior: smooth;
+ } 
+ *::-webkit-scrollbar{
+  @apply w-2 h-1 bg-[#69696974]
+  
+ } 
+ *::-webkit-scrollbar-thumb {
+  @apply bg-slate-400 rounded-full bg-[#ffffff9b]
+  
+ } 
+input , button{
+  border: none;
+  outline: none;
+}
+} 
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+@keyframes toggleAnimationRight{
+  0%{ 
+     transform: translateX(-25%);      
+     background-image: linear-gradient( rgb(0, 250, 179),rgb(0, 128, 113));
+    }50%{
+    transform: translateX(125%);      
+   }100%{
+    transform: translateX(100%);      
+   }
+}
+@keyframes toggleAnimationLeft{
+  0%{ 
+     transform: translateX(125%);      
+    }50%{
+    transform: translateX(-25%);      
+   }100%{
+    transform: translateX(0%);      
+   }
+}
+
+@keyframes moveY{
+  0%,40%{
+    transform: translateY(0px);
+    opacity: 0;
+  }
+  100%{
+    opacity: 1;
+    transform: translateY(-30px);
+  }
+}
+@keyframes hidden{
+ 100%{
+    transform: translateY(0px);
+    opacity: 0;
+  }
+ 
 }
